@@ -1,0 +1,11 @@
+<div class="modal_head">
+	<span>Список загруженных файлов</span>
+	<i class="icon icon_delete" onclick="common.modal_hide();"></i>	
+</div>
+<div style="padding: 20px; border-radius: 0 0 3px 3px; background: #fff;">
+	<div class="passport_sections" id="passport_files" style="margin-top: 0;"><?php $_html_tpl_vars = self::$_tpl_vars;
+self::include_file(['file'=>"./partials/modal/passports/passport_files_table.html", 'vars'=>[]]);
+self::$_tpl_vars = $_html_tpl_vars;
+unset($_html_tpl_vars);
+ ?></div>
+</div>

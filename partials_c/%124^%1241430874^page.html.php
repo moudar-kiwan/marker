@@ -1,0 +1,8 @@
+<div style="background: #e9eef4; padding: 20px; min-height: 100%; position: absolute; left: 0; right: 0;">
+	<div style="padding: 20px; border-radius: 5px; background: #fff; min-height: 200px; box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;">
+        <h1 style="font-size: 20px; font-weight: 400;"><?php echo self::$_tpl_vars['page']['title']; ?>
+</h1>
+        <div style="margin-top: 15px; line-height: 160%; font-size: 14px;"><?php echo self::$_tpl_vars['page']['content']; ?>
+</div>
+	</div>
+</div>

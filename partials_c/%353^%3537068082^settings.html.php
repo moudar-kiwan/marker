@@ -1,0 +1,14 @@
+<div style="padding: 20px; background: #fff; min-height: 200px;">
+	<div style="font-size: 18px; color: #04368f; font-weight: 400;">Настройки</div>
+	<div style="margin-top: 10px;">
+		<div style="padding-top: 10px; color: #04368f; font-weight: 600; font-size: 12px;">Электронная почта</div>
+		<input id="pick_email" type="text" placeholder="example@test.com" value="<?php echo self::$_tpl_vars['info']['pick_email']; ?>
+" style="width: 100%; max-width: 250px; height: 38px; line-height: 38px; border: 1px solid #ebedec; border-radius: 3px; padding: 0 10px; margin-top: 10px;" autocomplete="off" autocorrect="off" autocapitalize="off">
+		<div style="padding-top: 10px; color: #04368f; font-weight: 600; font-size: 12px;">Адрес сервера 1С</div>
+		<input id="pick_server" type="text" placeholder="127.0.0.1:80" value="<?php echo self::$_tpl_vars['info']['pick_server']; ?>
+" style="width: 100%; max-width: 250px; height: 38px; line-height: 38px; border: 1px solid #ebedec; border-radius: 3px; padding: 0 10px; margin-top: 10px;" autocomplete="off" autocorrect="off" autocapitalize="off">
+	</div>
+	<div style="margin-top: 20px; margin-bottom: 30px;">
+		<div class="btn_primary" onclick="settings.update();">Сохранить</div>
+	</div>
+</div>
