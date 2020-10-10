@@ -12,7 +12,8 @@ var pick = {
 	
 	paginator: function(offset) {
 		// vars
-		var data = { offset: offset };
+		var query = gv('picks_search');
+		var data = { offset: offset, query: query  };
 		var location = { dpt: 'pick', sub: 'common', act: 'paginator' };
 		// call
 		request({ location: location, data: data }, function(result) {
@@ -23,10 +24,24 @@ var pick = {
 			var url = '/picks';
 			var p = [];
 			if (offset) p.push('offset=' + offset);
+			if (query) p.push('q=' + query);
 			if (p.length > 0) url += '?' + p.join('&');
+		
+			
+				if (query) {
+					replace_class('picks_icon', 'icon_search', 'icon_delete');
+					attr('picks_icon', 'onclick', 'picks_search_clear();');
+				} else {
+					replace_class('picks_icon', 'icon_delete', 'icon_search');
+					attr('picks_search', 'onclick', '')
+				}
+				
+			
+			
 			window.history.pushState('', '', url);
 		});
 	},
+
 	
 	expand: function(pick_id) {
 		if (has_class('pick_details_' + pick_id, 'active')) {
@@ -67,5 +82,17 @@ var pick = {
 			html('picks_paginator', result.paginator);
 		});
 	},
+
 	
 }
+	function picks_search_clear() {
+	sv('picks_search', '');
+	pick.paginator();
+}
+
+
+		 function IsAlphaNumeric(e) {
+		    var ret = ( (/^[a-zA-Z]*$/g.test(e.key)) || (/^[а-яА-ЯёЁ]*$/g.test(e.key)) || (/^[0-9]*$/g.test(e.key)) || (/^[., ]*$/g.test(e.key)) );
+            document.getElementById("error").style.display = ret ? "none" : "inline";
+            return ret;
+		 }

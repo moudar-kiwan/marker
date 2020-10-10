@@ -4,8 +4,11 @@
 		<div style="display: table; width: 100%; margin-top: 15px;">
 			<div style="display: table-cell; vertical-align: top;">
 				<div class="input_search">
-					<input id="picks_search" type="text" placeholder="Поиск" oninput="input_error_hide(this);" autocomplete="off" autocorrect="off" autocapitalize="off">
-					<i class="icon icon_search"></i>
+				
+					<input id="picks_search" type="text" placeholder="Поиск" onkeypress="return IsAlphaNumeric(event);"  oninput="pick.paginator(); input_error_hide(this);" value="<?php echo self::$_tpl_vars['search_query']; ?>
+" autocomplete="off" autocorrect="off" autocapitalize="off">					
+					<i id="picks_icon" class="icon  icon_search " ></i>
+					<span id="error" style="color: Red; display: none">* Специальные символы не разрешены</span>
 				</div>
 			</div>
 			<div style="display: table-cell; vertical-align: top; text-align: right;">

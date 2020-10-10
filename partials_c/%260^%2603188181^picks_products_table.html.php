@@ -20,8 +20,8 @@ if (self::$_sections['j']['show']):
 ?>
 	<div class="passport_worker_sub_item">
 		<a href="/products/<?php echo self::$_tpl_vars['products'][self::$_sections['j']['index']]['id']; ?>
-" style="font-size: 11.5px; display: block;" target="_blank"><?php echo self::$_tpl_vars['products'][self::$_sections['j']['index']]['title']; ?>
-</a>
+" style="font-size: 11.5px; display: block; <?php if (self::$_tpl_vars['products'][self::$_sections['j']['index']]['str_in_title']): ?>font-weight:bold; <?php endif; ?> " target="_blank"><?php echo self::$_tpl_vars['products'][self::$_sections['j']['index']]['title']; ?>
+ </a>
 	</div>
 	<?php endfor; endif; ?>
 </div>

@@ -8,18 +8,24 @@
 
 		// GENERAL
 		
-		public static function pick_products_list($pick_id) {
+		public static function pick_products_list($pick_id,$str='') {
 			// vars
 			$items = [];
 			$manufacturers = [];
+			$in_title=0;
 			// query
 			$q = DB::query("SELECT pick_id, product_id, created FROM pick_products WHERE pick_id='".$pick_id."';") or die (DB::error());
 			while ($row = DB::fetch_row($q)) {
 				$product = Product::product_info_full($row['product_id']);
 				if (!in_array($product['manufacturer']['title'], $manufacturers)) $manufacturers[] = $product['manufacturer']['title'];
+				if(strlen($str)>0){
+					if(strpos($product['title'],$str) !== false) $in_title=1;
+					else $in_title=0;
+				}
 				$items[] = [
 					'id'=>$row['product_id'],
 					'title'=>$product['title'],
+					'str_in_title'=>$in_title,
 					'manufacturer'=>$product['manufacturer']['title'],
 					'created'=>date('d.m.y в H:i', ts_timezone($row['created'], Session::$tz))
 				];
